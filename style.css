@@ -360,11 +360,13 @@
   .subhead{
     font-family: "Fraunces", serif;
     font-style: italic;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    margin: 30px 0 12px;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--cherenkov);
+    margin: 36px 0 14px;
+    scroll-margin-top: 76px;
   }
-  .subhead:first-child{ margin-top: 0; }
+  .subhead:first-child{ margin-top: 20px; }
 
   /* News */
 
