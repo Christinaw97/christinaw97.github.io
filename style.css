@@ -235,6 +235,17 @@
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .card-img{
+    display: block;
+    width: 100%;
+    height: 165px;
+    object-fit: cover;
+  }
+
+  .card-body{
     padding: 22px 22px 24px;
   }
 
