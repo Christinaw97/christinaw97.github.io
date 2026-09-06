@@ -112,9 +112,18 @@
 
   .hero-grid{
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 32px;
-    align-items: center;
+    grid-template-columns: 1fr 170px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .hero-photo{
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--line-strong);
+    margin-top: 18px;
   }
 
   h1.name{
@@ -136,7 +145,7 @@
   .tagline{
     font-size: 1.02rem;
     color: var(--text);
-    max-width: 62ch;
+    max-width: 68ch;
     margin: 0 0 16px;
   }
   .tagline:last-of-type{ margin-bottom: 26px; }
@@ -169,23 +178,9 @@
   .btn-ghost{ color: var(--text-muted); }
   .btn-ghost:hover{ color: var(--text); border-color: var(--line-strong); background: var(--card); }
 
-  .hero-art{
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .hero-art img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid var(--line-strong);
-  }
-
   @media (max-width: 680px){
     .hero-grid{ grid-template-columns: 1fr; }
-    .hero-art{ order: -1; max-width: 220px; margin: 0 auto 8px; }
+    .hero-photo{ order: -1; width: 130px; height: 130px; margin: 0 0 8px; }
   }
 
   /* ---------- Sections ---------- */
@@ -232,11 +227,16 @@
   @media (max-width: 620px){ .card-grid{ grid-template-columns: 1fr; } }
 
   .card{
+    display: block;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 6px;
     overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.15s ease;
   }
+  .card:hover, .card:focus-visible{ border-color: var(--cherenkov); }
 
   .card-img{
     display: block;
@@ -258,12 +258,11 @@
     letter-spacing: -0.005em;
     margin: 0 0 8px;
   }
-  .card h3 a{
-    color: inherit;
-    text-decoration: none;
+  .card-title{
     border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
   }
-  .card h3 a:hover, .card h3 a:focus-visible{ border-bottom-color: var(--cherenkov); }
+  .card:hover .card-title, .card:focus-visible .card-title{ border-bottom-color: var(--cherenkov); }
 
   .card p{ font-size: 0.92rem; margin: 0; }
 
@@ -330,8 +329,25 @@
   .list-2col .entry:last-child{ border-bottom: none; }
 
   .entry-name{ color: var(--text); font-size: 0.93rem; }
-  a.entry-name{ text-decoration: none; }
+  a.entry-name{
+    position: relative;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  a.entry-name::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: var(--cherenkov);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
   a.entry-name:hover, a.entry-name:focus-visible{ color: var(--cherenkov); }
+  a.entry-name:hover::after, a.entry-name:focus-visible::after{ transform: scaleX(1); }
   .entry-sub{ color: var(--text-faint); font-size: 0.82rem; margin-top: 2px; }
   .entry-year{
     color: var(--text-faint);
@@ -362,9 +378,24 @@
   }
   .news-item:last-child{ border-bottom: none; }
   .news-text{ color: var(--text); font-size: 0.93rem; text-decoration: none; }
+  a.news-text{
+    position: relative;
+    transition: color 0.15s ease;
+  }
+  a.news-text::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: var(--cherenkov);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
   a.news-text:hover, a.news-text:focus-visible{ color: var(--cherenkov); }
-  .news-text a{ color: inherit; text-decoration: none; border-bottom: 1px solid var(--line-strong); }
-  .news-text a:hover, .news-text a:focus-visible{ color: var(--cherenkov); border-bottom-color: var(--cherenkov); }
+  a.news-text:hover::after, a.news-text:focus-visible::after{ transform: scaleX(1); }
   .news-sub{ color: var(--text-faint); font-size: 0.82rem; margin-top: 2px; }
   .news-year{ color: var(--text-faint); font-size: 0.85rem; white-space: nowrap; flex-shrink: 0; padding-left: 16px; }
 
